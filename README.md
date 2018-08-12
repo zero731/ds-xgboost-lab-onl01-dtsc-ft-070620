@@ -9,7 +9,7 @@ In this lab, we'll install the popular [XGBoost Library](http://xgboost.readthed
 
 The XGBoost model is not currently included in scikit-learn, so we'll have to install it on our own.  
 
-**TODO: Fix this section once the team has decided on best approach for installing xgboost in Learn or having students install the library using `conda install py-xgboost`.**
+**Install the library using `conda install py-xgboost`.**
 
 Run the cell below to import everything we'll need for this lab. 
 
@@ -28,11 +28,11 @@ warnings.filterwarnings('ignore')
 %matplotlib inline
 ```
 
-    C:\Users\medio\AppData\Local\Continuum\anaconda3\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+    /anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
       "This module will be removed in 0.20.", DeprecationWarning)
-    C:\Users\medio\AppData\Local\Continuum\anaconda3\lib\site-packages\sklearn\grid_search.py:42: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. This module will be removed in 0.20.
+    /anaconda3/lib/python3.6/site-packages/sklearn/grid_search.py:42: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. This module will be removed in 0.20.
       DeprecationWarning)
-    
+
 
 The dataset we'll be using for this lab is currently stored in the file `winequality-red.csv`.  
 
@@ -198,9 +198,9 @@ print("Training Accuracy: {:.4}%".format(training_accuracy * 100))
 print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
 ```
 
-    Training Accuracy: 80.65%
-    Validation accuracy: 66.75%
-    
+    Training Accuracy: 81.15%
+    Validation accuracy: 65.0%
+
 
 ### Tuning XGBoost
 
@@ -232,6 +232,8 @@ Now that we have constructed our `params` dictionary, create a `GridSearchCV` ob
 grid_clf = GridSearchCV(clf, param_grid, scoring='accuracy', cv=None, n_jobs=1)
 grid_clf.fit(scaled_df, labels)
 
+best_parameters = grid_clf.best_params_
+
 print("Grid Search found the following optimal parameters: ")
 for param_name in sorted(best_parameters.keys()):
     print("%s: %r" % (param_name, best_parameters[param_name]))
@@ -253,9 +255,9 @@ print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
     n_estimators: 30
     subsample: 0.7
     
-    Training Accuracy: 75.81%
-    Validation accuracy: 76.75%
-    
+    Training Accuracy: 76.15%
+    Validation accuracy: 76.5%
+
 
 That's a big improvement! We've increased our validation accuracy by around 10%, and we've also stopped the model from overfitting.  
 
