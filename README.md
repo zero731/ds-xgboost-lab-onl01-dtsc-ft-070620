@@ -9,7 +9,7 @@ In this lab, we'll install the popular [XGBoost Library](http://xgboost.readthed
 
 The XGBoost model is not currently included in scikit-learn, so we'll have to install it on our own.  
 
-**TODO: Fix this section once the team has decided on best approach for installing xgboost in Learn or having students install the library using `conda install py-xgboost`.**
+**Install the library using `conda install py-xgboost`.**
 
 Run the cell below to import everything we'll need for this lab. 
 
@@ -54,7 +54,7 @@ labels_removed_df = None
 scaler =None
 scaled_df = None
 
-X_train, X_test, y_train, y_test = None
+# Calculate X_train, X_test, y_train, y_test 
 ```
 
 Now that we have prepared our data for modeling, we can use XGBoost to build a model that can accurately classify wine quality based on the features of the wine!
@@ -64,14 +64,14 @@ The API for xgboost is purposefully written to mirror the same structure as othe
 
 ```python
 clf = None
-clf.fit(None, None)
+# clf.fit(None, None)
 training_preds = None
 val_preds = None
 training_accuracy = None
 val_accuracy =None
 
-print("Training Accuracy: {:.4}%".format(training_accuracy * 100))
-print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
+# print("Training Accuracy: {:.4}%".format(training_accuracy * 100))
+# print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
 ```
 
 ### Tuning XGBoost
@@ -102,20 +102,20 @@ Now that we have constructed our `params` dictionary, create a `GridSearchCV` ob
 
 ```python
 grid_clf = None
-grid_clf.fit(None, None)
+# grid_clf.fit(None, None)
 
-print("Grid Search found the following optimal parameters: ")
-for param_name in sorted(best_parameters.keys()):
-    print("%s: %r" % (param_name, best_parameters[param_name]))
+# print("Grid Search found the following optimal parameters: ")
+# for param_name in sorted(best_parameters.keys()):
+#     print("%s: %r" % (param_name, best_parameters[param_name]))
 
 training_preds = None
 val_preds = None
 training_accuracy = None
 val_accuracy = None
 
-print("")
-print("Training Accuracy: {:.4}%".format(training_accuracy * 100))
-print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
+# print("")
+# print("Training Accuracy: {:.4}%".format(training_accuracy * 100))
+# print("Validation accuracy: {:.4}%".format(val_accuracy * 100))
 ```
 
 That's a big improvement! We've increased our validation accuracy by around 10%, and we've also stopped the model from overfitting.  
